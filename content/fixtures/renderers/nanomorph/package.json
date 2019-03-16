@@ -5,7 +5,7 @@
   "dependencies": {
     "nanohtml": "^1.5.0",
     "nanomorph": "^5.4.0",
-    "swiss-element": "0.13.0",
+    "swiss-element": "0.14.0",
     "swiss-hooks": "0.0.1"
   }
 }
