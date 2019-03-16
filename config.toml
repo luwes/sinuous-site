@@ -5,4 +5,5 @@ theme = "default"
 ignoreFiles = [ "node_modules" ]
 
 [params]
-github = "https://github.com/luwes/swiss-element/"
+github = "https://github.com/luwes/swiss"
+githubSite = "https://github.com/luwes/swiss-site"
