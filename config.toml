@@ -1,6 +1,6 @@
 baseURL = "https://swiss.netlify.com/"
 languageCode = "en-us"
-title = "🇨🇭Swiss Element - Custom elements made easy."
+title = "🇨🇭Swiss - Custom elements made easy."
 theme = "default"
 ignoreFiles = [ "node_modules" ]
 
