@@ -9,9 +9,7 @@ function Counter() {
     h('div', { class: 'level-item' }, [
       h('button', { class: 'button', onclick: () => setCount(count - 1) }, '-')
     ]),
-    h('div', { class: 'level-item' }, [
-      h('h1', { class: 'title' }, count)
-    ]),
+    h('div', { class: 'level-item' }, [h('h1', { class: 'title' }, count)]),
     h('div', { class: 'level-item' }, [
       h('button', { class: 'button', onclick: () => setCount(count + 1) }, '+')
     ])

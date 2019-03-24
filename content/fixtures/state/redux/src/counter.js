@@ -1,4 +1,4 @@
-import { html, render } from 'htm/preact/standalone';
+import { html, render } from 'swiss-element/html';
 import { context, useSelector, useActions } from 'swiss-redux';
 import { compose, element, renderer } from 'swiss-element';
 import { createStore } from 'redux';
