@@ -1,5 +1,5 @@
 import { applyMiddleware, element } from 'swiss-element';
-import { useState } from 'swiss-hooks';
+import { useState } from 'swiss-element/hooks';
 import logger from 'swiss-logger';
 import { h } from 'stage0';
 import { useView, getRandomColor } from './utils.js';

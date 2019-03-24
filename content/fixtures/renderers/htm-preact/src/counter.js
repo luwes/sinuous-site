@@ -1,6 +1,6 @@
 import { html, render } from 'htm/preact/standalone';
 import { element, renderer } from 'swiss-element';
-import { useState } from 'swiss-hooks';
+import { useState } from 'swiss-element/hooks';
 
 function Counter() {
   const [count, setCount] = useState(0);

@@ -1,7 +1,7 @@
 import morph from 'nanomorph';
 import html from 'nanohtml/lib/browser';
 import { element, renderer } from 'swiss-element';
-import { useState } from 'swiss-hooks';
+import { useState } from 'swiss-element/hooks';
 
 function Counter() {
   const [count, setCount] = useState(0);

@@ -1,5 +1,5 @@
 import { element, renderer } from 'swiss-element';
-import { useState } from 'swiss-hooks';
+import { useState } from 'swiss-element/hooks';
 import { html, render } from 'lit-html';
 import './fullname.js';
 

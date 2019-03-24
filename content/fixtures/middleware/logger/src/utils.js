@@ -1,4 +1,4 @@
-import { useMemo } from 'swiss-hooks';
+import { useMemo } from 'swiss-element/hooks';
 
 export function useView(fn) {
   const html = useMemo(fn, []);
