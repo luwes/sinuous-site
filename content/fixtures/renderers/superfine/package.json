@@ -1,9 +1,9 @@
 {
-  "name": "swiss-element-superfine",
+  "name": "swiss-superfine",
   "private": true,
   "version": "0.0.1",
   "dependencies": {
     "superfine": "6.0.1",
-    "swiss-element": "0.16.0"
+    "swiss": "1.0.0"
   }
 }

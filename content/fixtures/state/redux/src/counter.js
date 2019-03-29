@@ -1,6 +1,6 @@
-import { html, render } from 'swiss-element/html';
+import { compose, element, renderer } from 'swiss';
+import { html, render } from 'swiss/html';
 import { context, useSelector, useActions } from 'swiss-redux';
-import { compose, element, renderer } from 'swiss-element';
 import { createStore } from 'redux';
 
 function counter(state = 0, action) {

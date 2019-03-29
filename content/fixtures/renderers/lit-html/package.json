@@ -1,9 +1,9 @@
 {
-  "name": "swiss-element-lithtml-fullname",
+  "name": "swiss-lithtml-fullname",
   "private": true,
   "version": "0.2.0",
   "dependencies": {
     "lit-html": "^1.0.0",
-    "swiss-element": "0.16.0"
+    "swiss": "1.0.0"
   }
 }

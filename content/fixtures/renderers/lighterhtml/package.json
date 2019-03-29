@@ -1,9 +1,9 @@
 {
-  "name": "swiss-element-lighterhtml-fullname",
+  "name": "swiss-lighterhtml-fullname",
   "private": true,
   "version": "0.2.0",
   "dependencies": {
     "lighterhtml": "^0.9.2",
-    "swiss-element": "0.16.0"
+    "swiss": "1.0.0"
   }
 }

@@ -1,5 +1,5 @@
-import { element, renderer } from 'swiss-element';
-import { useState } from 'swiss-element/hooks';
+import { element, renderer } from 'swiss';
+import { useState } from 'swiss/hooks';
 import { html, render } from 'lighterhtml';
 
 function dispatch(el, first, last) {

@@ -1,5 +1,5 @@
-import { element } from 'swiss-element';
-import { useState } from 'swiss-element/hooks';
+import { element } from 'swiss';
+import { useState } from 'swiss/hooks';
 import { h } from 'stage0';
 import { useView } from './utils.js';
 

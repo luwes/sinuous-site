@@ -1,4 +1,4 @@
-import { applyMiddleware, compose, element, renderer } from 'swiss-element';
+import { applyMiddleware, compose, element, renderer } from 'swiss';
 import thunk from 'swiss-thunk';
 
 function Nav() {
