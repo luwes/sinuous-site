@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "redux": "^4.0.1",
-    "swiss": "1.1.1",
+    "swiss": "1.1.2",
     "swiss-redux": "1.0.0"
   }
 }
