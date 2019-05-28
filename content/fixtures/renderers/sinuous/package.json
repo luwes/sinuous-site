@@ -1,0 +1,9 @@
+{
+  "name": "swiss-sinuous",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "sinuous": "0.6.1",
+    "swiss": "1.1.2"
+  }
+}
