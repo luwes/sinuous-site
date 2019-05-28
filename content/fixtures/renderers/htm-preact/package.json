@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "dependencies": {
-    "htm": "^2.1.1",
+    "preact": "10.0.0-alpha.2",
     "swiss": "1.1.2"
   }
 }

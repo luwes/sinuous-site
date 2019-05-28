@@ -1,4 +1,4 @@
-import { html, render } from 'htm/preact/standalone';
+import { h, render } from 'preact';
 import { element, renderer } from 'swiss';
 import { useState } from 'swiss/hooks';
 
