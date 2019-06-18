@@ -1,8 +1,5 @@
-import o, * as api from 'sinuous/observable';
-import sinuous from 'sinuous';
+import { o, h } from 'sinuous';
 import { element } from 'swiss';
-
-const h = sinuous(api);
 
 function Counter() {
   const count = o(0);

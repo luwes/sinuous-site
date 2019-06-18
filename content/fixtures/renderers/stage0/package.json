@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "dependencies": {
-    "stage0": "^0.0.21",
+    "stage0": "0.0.24",
     "swiss": "1.1.2"
   }
 }
