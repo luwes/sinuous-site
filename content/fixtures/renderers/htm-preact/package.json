@@ -1,9 +1,0 @@
-{
-  "name": "swiss-htm-preact",
-  "private": true,
-  "version": "0.0.1",
-  "dependencies": {
-    "preact": "10.0.0-alpha.2",
-    "swiss": "1.1.2"
-  }
-}

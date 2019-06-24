@@ -1,9 +1,0 @@
-{
-  "name": "swiss-lithtml-fullname",
-  "private": true,
-  "version": "0.2.0",
-  "dependencies": {
-    "lit-html": "1.1.0",
-    "swiss": "1.1.2"
-  }
-}

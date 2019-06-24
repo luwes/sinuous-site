@@ -1,9 +1,0 @@
-{
-  "name": "swiss-superfine",
-  "private": true,
-  "version": "0.0.1",
-  "dependencies": {
-    "superfine": "6.0.1",
-    "swiss": "1.1.2"
-  }
-}

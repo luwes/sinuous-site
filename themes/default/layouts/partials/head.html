@@ -15,11 +15,10 @@
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  {{ $style := resources.Get "/sass/bulma.sass" | toCSS | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ $custom := resources.Get "/scss/custom.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $custom.Permalink }}">
 
   <link rel="stylesheet" href="/css/prism.css">
-  <link rel="stylesheet" href="/css/custom.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

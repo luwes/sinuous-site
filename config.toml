@@ -1,9 +1,9 @@
-baseURL = "https://swiss.netlify.com/"
+baseURL = "https://sinuous.netlify.com/"
 languageCode = "en-us"
-title = "🇨🇭Swiss - Custom elements made easy."
+title = "Sinuous - Small, blazing fast, reactive UI library."
 theme = "default"
 ignoreFiles = [ "node_modules" ]
 
 [params]
-github = "https://github.com/luwes/swiss"
-githubSite = "https://github.com/luwes/swiss-site"
+github = "https://github.com/luwes/sinuous"
+githubSite = "https://github.com/luwes/sinuous-site"

@@ -1,9 +1,0 @@
-{
-  "name": "swiss-stage0-fixture",
-  "private": true,
-  "version": "0.0.1",
-  "dependencies": {
-    "stage0": "0.0.24",
-    "swiss": "1.1.2"
-  }
-}
