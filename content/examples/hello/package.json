@@ -1,8 +1,8 @@
 {
-  "name": "sinuous-todos",
+  "name": "sinuous-hello",
   "private": true,
   "version": "0.0.1",
   "dependencies": {
-    "sinuous": "0.10.1"
+    "sinuous": "0.11.0"
   }
 }

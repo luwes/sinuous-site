@@ -1,7 +1,18 @@
 
 $body-line-height: 1.6;
+$section-padding: 5rem 1.5rem;
 
 @import '../../themes/default/assets/sass/bulma.sass';
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.section {
+  flex: 1;
+}
 
 .column {
   min-width: 0;

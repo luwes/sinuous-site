@@ -26,7 +26,7 @@
 
 <section class="section">
   <div class="container">
-    {{ range .Pages }}
+    {{ range (where $.Site.RegularPages "Section" "examples") }}
       <div class="example columns">
         <div class="column is-one-third">
           <div class="content">
