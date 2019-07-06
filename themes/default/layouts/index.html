@@ -37,7 +37,7 @@
         <div class="column">
           <div class="snippet columns is-gapless">
             {{ if index (.Params.source) 0 }}
-              {{ $sized := readFile (printf "%s.gz" (replace (index (.Params.source) 0) "src" "dist")) }}
+              {{ $sized := readFile (printf "%s.gz" (replaceRE "src/(.*).js" "dist/$1.min.js" (index (.Params.source) 0))) }}
               <div class="snippet-tag">
                 {{- div (len $sized) 1000.0 | lang.NumFmt 2 }} kB
               </div>
