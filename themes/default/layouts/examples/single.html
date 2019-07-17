@@ -5,7 +5,7 @@
       <h1 class="title">
         <span>{{ .Title }}</span>
         {{ if index (.Params.source) 0 }}
-          {{ $sized := readFile (printf "%s.gz" (replace (index (.Params.source) 0) "src" "dist")) }}
+          {{ $sized := readFile (printf "%s.gz" (replaceRE "src/(.*).js" "dist/$1.min.js" (index (.Params.source) 0))) }}
           <span class="tags has-addons is-inline-flex">
             <span class="tag is-dark">gzip</span>
             <span class="tag is-success">{{- div (len $sized) 1000.0 | lang.NumFmt 2 }} kB</span>
@@ -20,6 +20,13 @@
         {{ end }}
 
         {{ .Content }}
+
+        <div class="section">
+          <div class="box">
+            <div class="{{ .Params.class }}"></div>
+            <script src="../../{{ (replaceRE "src/(.*).js" "dist/$1.min.js" (index (.Params.source) 0)) }}"></script>
+          </div>
+        </div>
 
         {{ if .Params.source }}
           <div class="source-code">
