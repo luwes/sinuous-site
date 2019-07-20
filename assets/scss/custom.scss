@@ -1,6 +1,7 @@
 
 $body-line-height: 1.6;
 $section-padding: 5rem 1.5rem;
+$navbar-height: 4rem;
 
 @import '../../themes/default/assets/sass/bulma.sass';
 
@@ -21,17 +22,28 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
+  border-bottom: 2px #f5f5f5 solid;
+}
+
+.hero-body .container {
+  padding-left: 4rem;
 }
 
 .hero-icon {
+  z-index: -1;
   position: absolute;
-  bottom: -5rem;
-  right: 10rem;
+  top: 50%;
+  right: 15%;
+  transform: translate(0, -50%);
   svg {
-    width: 240px;
+    width: 360px;
     height: auto;
     path:nth-last-child(2) {
-      fill: rgba(0, 0, 0, 0.05);
+      fill: rgba(120, 255, 185, 0.15);
+    }
+    path:nth-last-child(1) {
+      fill: rgba(255, 255, 255, 0.45);
+      fill-opacity: 1;
     }
   }
 }
@@ -44,7 +56,15 @@ body {
 .logo {
   width: auto;
   height: 28px;
-  margin-top: -4px;
+  margin-top: -3px;
+}
+
+.navbar-start .navbar-item {
+  font-size: 1.2rem;
+}
+
+.navbar-brand {
+  padding-right: 2.5rem;
 }
 
 .lead {
