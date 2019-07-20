@@ -183,9 +183,9 @@ var _ = {
       selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
     };
 
-    _.hooks.run("before-highlightall", env);
+    _.hooks.run('before-highlightall', env);
 
-    var elements = env.elements || container.querySelectorAll(env.selector);
+    var elements = container.querySelectorAll(env.selector);
 
     for (var i=0, element; element = elements[i++];) {
       _.highlightElement(element, async === true, env.callback);
@@ -785,7 +785,7 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
   ],
   'number': /\b(?:(?:0[xX](?:[\dA-Fa-f](?:_[\dA-Fa-f])?)+|0[bB](?:[01](?:_[01])?)+|0[oO](?:[0-7](?:_[0-7])?)+)n?|(?:\d(?:_\d)?)+n|NaN|Infinity)\b|(?:\b(?:\d(?:_\d)?)+\.?(?:\d(?:_\d)?)*|\B\.(?:\d(?:_\d)?)+)(?:[Ee][+-]?(?:\d(?:_\d)?)+)?/,
   // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
-  'function': /[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+  'function': /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
   'operator': /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
 });
 
@@ -799,7 +799,7 @@ Prism.languages.insertBefore('javascript', 'keyword', {
   },
   // This must be declared before keyword because we use "function" inside the look-forward
   'function-variable': {
-    pattern: /[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/,
+    pattern: /#?[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/,
     alias: 'function'
   },
   'parameter': [
@@ -827,59 +827,29 @@ Prism.languages.insertBefore('javascript', 'keyword', {
 });
 
 Prism.languages.insertBefore('javascript', 'string', {
-  'template-string': []
-});
-
-Object.defineProperty(Prism.languages.javascript['template-string'], 'createTemplate', {
-
-  /**
-   * Creates a new pattern to match a template string with a special tag.
-   *
-   * @param {string} tokenName The the name of the token matching the content inside a template. E.g. `string`.
-   * @param {string} [tag] The regex pattern to match the tag.
-   * @param {string} [language] The id of the language inside the template string.
-   *
-   * If defined, a `language-xxxx` alias for the given language id will also be added.
-   * @returns {object} The new token.
-   * @example
-   * createTemplate('style', /\bcss/.source, 'css');
-   * createTemplate('string'); // template strings without tags
-   */
-  value: function createTemplate(tokenName, tag, language) {
-    var patternObj = {
-      pattern: RegExp((tag ? '((?:' + tag + ')\\s*)' : '') + /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|[^\\`])*`/.source),
-      lookbehind: !!tag,
-      greedy: true,
-      inside: {
-        'template-punctuation': {
-          pattern: /^`|`$/,
-          alias: 'string'
-        },
-        'interpolation': {
-          pattern: /\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
-          inside: {
-            'interpolation-punctuation': {
-              pattern: /^\${|}$/,
-              alias: 'punctuation'
-            },
-            rest: Prism.languages.javascript
-          }
+  'template-string': {
+    pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+    greedy: true,
+    inside: {
+      'template-punctuation': {
+        pattern: /^`|`$/,
+        alias: 'string'
+      },
+      'interpolation': {
+        pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+        lookbehind: true,
+        inside: {
+          'interpolation-punctuation': {
+            pattern: /^\${|}$/,
+            alias: 'punctuation'
+          },
+          rest: Prism.languages.javascript
         }
-      }
-    };
-
-    patternObj.inside[tokenName] = !language ? /[\s\S]+/ : {
-      pattern: /[\s\S]+/,
-      alias: 'language-' + language,
-      inside: Prism.languages[language]
-    };
-
-    return patternObj;
+      },
+      'string': /[\s\S]+/
+    }
   }
-
 });
-
-Prism.languages.javascript['template-string'].push(Prism.languages.javascript['template-string'].createTemplate('string'));
 
 if (Prism.languages.markup) {
   Prism.languages.markup.tag.addInlined('script', 'javascript');
@@ -997,37 +967,3 @@ Prism.languages.js = Prism.languages.javascript;
   });
 
 })();
-
-(function (Prism) {
-
-  /** @type {Array} */
-  var templates = Prism.languages.javascript['template-string'];
-  var createTemplate = templates.createTemplate;
-
-  templates.unshift(
-    // styled-jsx:
-    //   css`a { color: #25F; }`
-    // styled-components:
-    //   styled.h1`color: red;`
-    createTemplate('css', /\b(?:styled(?:\([^)]*\))?(?:\s*\.\s*\w+(?:\([^)]*\))*)*|css(?:\s*\.\s*(?:global|resolve))?|createGlobalStyle|keyframes)/.source, 'css'),
-
-    // html`<p></p>`
-    // div.innerHTML = `<p></p>`
-    createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*=/.source, 'markup'),
-
-    createTemplate('svg', /\bsvg|\.\s*(?:inner|outer)HTML\s*=/.source, 'markup'),
-
-    // md`# h1`, markdown`## h2`
-    createTemplate('markdown', /\b(?:md|markdown)/.source, 'markdown'),
-
-    // gql`...`, graphql`...`, graphql.experimental`...`
-    createTemplate('graphql', /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source, 'graphql')
-  );
-
-}(Prism));
-
-!function(){if("undefined"!=typeof self&&self.Prism||"undefined"!=typeof global&&global.Prism){var n=function(n){return n},s={classMap:n,prefixString:""};Prism.plugins.customClass={map:function(i){s.classMap="function"==typeof i?i:function(n){return i[n]||n}},prefix:function(n){s.prefixString=n}},Prism.hooks.add("wrap",function(i){(s.classMap!==n||s.prefixString)&&(i.classes=i.classes.map(function(n){return s.prefixString+s.classMap(n,i.language)}))})}}();
-
-Prism.plugins.customClass.map({
-  tag: 'node'
-});
