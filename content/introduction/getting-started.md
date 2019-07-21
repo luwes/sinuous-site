@@ -3,6 +3,7 @@ title: Getting Started
 menu:
   main:
     title: Docs
+    weight: 10
   docs:
     parent: introduction
     weight: 10
