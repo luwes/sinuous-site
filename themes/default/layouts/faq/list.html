@@ -6,8 +6,10 @@
       <div class="column is-one-quarter">
         {{- partial "sidebar.html" . -}}
       </div>
-      <div class="column content">
-        {{- .Content -}}
+      <div class="column">
+        {{ range .Pages }}
+          {{ .Render "single"}}
+        {{ end }}
       </div>
     </div>
   </div>
