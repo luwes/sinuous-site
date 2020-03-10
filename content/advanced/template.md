@@ -10,7 +10,7 @@ menu:
 The `template` module makes Sinuous a real powerhouse in the UI performance benchmarks. It offers a way to pre-render a template or HTML snippet with defined dynamic expressions. This template can then later be cloned in the fastest way possible, it uses the native `Element.cloneNode()` under the hood.
 
 ```js
-import { h } from 'sinuous';
+import { html } from 'sinuous';
 import { template, t, o } from 'sinuous/template';
 
 const Row = template(
